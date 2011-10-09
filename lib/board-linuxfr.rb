@@ -1,19 +1,24 @@
 require "goliath"
 require "yajl"
-require "board-linuxfr/redis_plugin"
 
 
 class BoardLinuxfr < Goliath::API
+  autoload :Cache,       "board-linuxfr/cache"
+  autoload :RedisPlugin, "board-linuxfr/redis_plugin"
+  autoload :VERSION,     "board-linuxfr/version"
+
   plugin RedisPlugin
 
   def response(env)
     env.logger.debug "New client: #{env['PATH_INFO']}"
-    send_msg = ->(msg) {
-      env.logger.debug " -> #{msg}"
-      env.stream_send("data: #{msg}\nid: #{msg[:id]}\n\n")
+    send_msg  = ->(args) {
+      id, msg = *args
+      env.logger.info " -> #{id}. #{msg}"
+      env.stream_send("data: #{args.last}\nid: #{args.first}\n\n")
     }
-    event_id     = env['HTTP_LAST_EVENT_ID']
-    chan_name    = env['PATH_INFO'].delete('/b/')
+    event_id  = env['HTTP_LAST_EVENT_ID']
+    chan_name = env['PATH_INFO'].split('/', 3).last
+    env.logger.info "chan_name = #{chan_name.inspect}"
     env['cache'] = status[:cache][chan_name]
     env['chan']  = status[:channels][chan_name]
     env['sid']   = env['chan'].subscribe &send_msg

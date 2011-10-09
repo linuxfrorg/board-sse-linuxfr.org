@@ -1,5 +1,5 @@
 # encoding: utf-8
-require './lib/board-linuxfr/version'
+require './lib/board-linuxfr'
 
 Gem::Specification.new do |s|
   s.name         = "board-linuxfr"

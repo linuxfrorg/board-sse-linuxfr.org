@@ -1,7 +1,4 @@
-require "goliath/api"
-
-
-class BoardLinuxfr < Goliath::API
+class BoardLinuxfr
   class Cache
     CAPACITY = 10
 

@@ -5,9 +5,8 @@ require "redis/connection/synchrony"
 require "board-linuxfr/cache"
 
 
-class BoardLinuxfr < Goliath::API
+class BoardLinuxfr
   class RedisPlugin
-
     def initialize(port, config, status, logger)
       logger.info "Initializing the Redis plugin"
       @logger = logger
@@ -24,10 +23,10 @@ class BoardLinuxfr < Goliath::API
           end
 
           on.pmessage do |pattern, chan, msg|
-            _, chan, id, kind = *chan.split('/')
-            @logger.info "New message: [#{chan}] #{id}. #{kind}> #{msg}"
+            _, chan, id = *chan.split('/')
+            @logger.info "New message: [#{chan.inspect}] #{id}. #{msg}"
             [@chans, @cache].each do |storage|
-              storage[chan].push(id: id, kind: kind, msg: msg)
+              storage[chan].push [id, msg]
             end
           end
 

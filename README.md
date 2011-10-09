@@ -2,22 +2,24 @@ Board for LinuxFr.org
 =====================
 
 Users of the LinuxFr.org website can chat on a space called the board
-(« la tribune » in french). This was an experiment for notifying the users
+(« la tribune » in french). This is an experiment for notifying the users
 when something is said with Server-Sent Event / EventSource.
 
-For the moment, I won't use it because:
+For the moment, there are some difficulties:
 
-- the current board daemon works
 - I was hoping to simplify largely its logic, but it's not the case
+  → maybe, it will be better if I also refactor code in the Rails part
 - Goliath can't listen on UNIX socket
+  → it's no longer the case (fixed in the git repository)
 - EventSource is not supported by most browsers
-  and I'm not very confident in the polyfills for it
+  → I need to try the polyfills
 
 
 See also
 --------
 
-* [Git repository](http://github.com/nono/board-see-LinuxFr.org)
+* [Git repository](http://github.com/nono/board-sse-LinuxFr.org)
+* [Current board](https://github.com/nono/Board-LinuxFr.org)
 
 
 Copyright
