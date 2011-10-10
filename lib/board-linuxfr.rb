@@ -10,15 +10,14 @@ class BoardLinuxfr < Goliath::API
   plugin RedisPlugin
 
   def response(env)
-    env.logger.debug "New client: #{env['PATH_INFO']}"
+    env.logger.info "New client: #{env['PATH_INFO']}"
     send_msg  = ->(args) {
       id, msg = *args
-      env.logger.info " -> #{id}. #{msg}"
+      env.logger.debug " -> #{id}. #{msg}"
       env.stream_send("data: #{args.last}\nid: #{args.first}\n\n")
     }
     event_id  = env['HTTP_LAST_EVENT_ID']
     chan_name = env['PATH_INFO'].split('/', 3).last
-    env.logger.info "chan_name = #{chan_name.inspect}"
     env['cache'] = status[:cache][chan_name]
     env['chan']  = status[:channels][chan_name]
     env['sid']   = env['chan'].subscribe &send_msg

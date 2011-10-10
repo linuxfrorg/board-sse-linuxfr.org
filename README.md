@@ -15,6 +15,13 @@ For the moment, there are some difficulties:
   → I need to try the polyfills
 
 
+TODO
+----
+
+* Add comments
+* ./bin/board-linuxfr -svS ../board.sock
+
+
 See also
 --------
 
