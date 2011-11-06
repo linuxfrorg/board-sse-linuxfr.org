@@ -10,9 +10,9 @@ For the moment, there are some difficulties:
 - I was hoping to simplify largely its logic, but it's not the case
   → maybe, it will be better if I also refactor code in the Rails part
 - Goliath can't listen on UNIX socket
-  → it's no longer the case (fixed in the git repository)
+  → it's no longer the case (fixed in v0.9.3)
 - EventSource is not supported by most browsers
-  → I need to try the polyfills
+  → Not true, and https://github.com/Yaffle/EventSource is a good polyfill
 
 
 TODO
@@ -20,6 +20,7 @@ TODO
 
 * Add comments
 * ./bin/board-linuxfr -svS ../board.sock
+* board-linuxfr -v -S /data/alpha/alpha/board/board.sock -l /data/alpha/alpha/board/board.log -P /data/alpha/alpha/board/board.pid -d
 
 
 See also

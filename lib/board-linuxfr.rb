@@ -15,6 +15,7 @@ class BoardLinuxfr < Goliath::API
       id, msg = *args
       env.logger.debug " -> #{id}. #{msg}"
       env.stream_send("data: #{args.last}\nid: #{args.first}\n\n")
+      env.stream_close if env['HTTP_X_REQUESTED_WITH']
     }
     event_id  = env['HTTP_LAST_EVENT_ID']
     chan_name = env['PATH_INFO'].split('/', 3).last
