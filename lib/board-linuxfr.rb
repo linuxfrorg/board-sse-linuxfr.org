@@ -13,7 +13,6 @@ class BoardLinuxfr < Goliath::API
     env.logger.info "New client: #{env['PATH_INFO']}"
     send_msg  = ->(args) {
       id, msg = *args
-      env.logger.debug " -> #{id}. #{msg}"
       env.stream_send("data: #{args.last}\nid: #{args.first}\n\n")
       env.stream_close if env['HTTP_X_REQUESTED_WITH']
     }
