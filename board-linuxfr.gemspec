@@ -15,10 +15,10 @@ Gem::Specification.new do |s|
   s.executables  = ["board-linuxfr"]
   s.require_path = 'lib'
 
-  s.add_dependency "goliath",   "~>0.9"
-  s.add_dependency "hiredis",   "~>0.3"
-  s.add_dependency "redis",     "~>2.2"
-  s.add_dependency "yajl-ruby", "~>1.0"
+  s.add_dependency "goliath",   "~>1.0"
+  s.add_dependency "hiredis",   "~>0.4"
+  s.add_dependency "redis",     "~>3.0"
+  s.add_dependency "yajl-ruby", "~>1.2"
 
   s.add_development_dependency "minitest", "~>2.3"
 end
