@@ -7,7 +7,7 @@ require "board-linuxfr/cache"
 
 class BoardLinuxfr
   class RedisPlugin
-    def initialize(port, config, status, logger)
+    def initialize(address, port, config, status, logger)
       logger.info "Initializing the Redis plugin"
       @logger = logger
       @chans  = status[:channels] = Hash.new { |h,k| h[k] = EM::Channel.new }

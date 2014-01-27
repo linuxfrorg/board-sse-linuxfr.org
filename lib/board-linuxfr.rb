@@ -1,4 +1,5 @@
 require "goliath"
+require "board-linuxfr/monkeypatch"
 require "yajl"
 
 
