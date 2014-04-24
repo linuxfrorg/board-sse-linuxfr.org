@@ -17,7 +17,7 @@ and it will listen on a UNIX socket at `/tmp/board.sock`.
 See also
 --------
 
-* [Git repository](http://github.com/nono/board-sse-LinuxFr.org)
+* [Git repository](https://github.com/linuxfrorg/board-sse-LinuxFr.org)
 * [Rubygems page](https://rubygems.org/gems/board-linuxfr)
 
 

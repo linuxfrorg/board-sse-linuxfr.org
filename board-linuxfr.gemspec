@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version      = BoardLinuxfr::VERSION
   s.authors      = ["Bruno Michel"]
   s.email        = "nono@linuxfr.org"
-  s.homepage     = "https://github.com/nono/board-sse-linuxfr.org"
+  s.homepage     = "https://github.com/linuxfrorg/board-sse-linuxfr.org"
   s.summary      = "Push notifications for the board of LinuxFr.org via Server-Sent Events"
   s.description  = "Push notifications for the board of LinuxFr.org via Server-Sent Events"
 
