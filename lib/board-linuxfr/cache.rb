@@ -12,7 +12,7 @@ class BoardLinuxfr
         found = false
         each do |item|
           blk.call item if found
-          found ||= item[:id] == id
+          found ||= item.first == id
         end
       end
     end
