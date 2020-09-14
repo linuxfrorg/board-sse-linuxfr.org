@@ -12,7 +12,7 @@ class BoardLinuxfr
       @logger = logger
       @chans  = status[:channels] = Hash.new { |h,k| h[k] = EM::Channel.new }
       @cache  = status[:cache]    = Cache.new
-      @redis  = Redis.new
+      @redis  = Redis.new(host: ENV['REDIS_HOST'] || "localhost", port: ENV['REDIS_PORT'] || 6379)
     end
 
     def run
