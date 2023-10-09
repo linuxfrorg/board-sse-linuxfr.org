@@ -1,0 +1,18 @@
+services:
+  linuxfr-board:
+    build:
+      context: .
+      dockerfile: ./deployment/Dockerfile
+    env_file:
+      - deployment/default.env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:5
+    volumes:
+      - data-redis:/data
+
+volumes:
+  data-redis:
+    driver: local
