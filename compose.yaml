@@ -2,7 +2,7 @@ services:
   linuxfr-board:
     build:
       context: .
-      dockerfile: ./deployment/Dockerfile
+      dockerfile: ./deployment/Containerfile
     env_file:
       - deployment/default.env
     depends_on:
