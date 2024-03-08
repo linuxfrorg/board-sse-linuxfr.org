@@ -1,0 +1,25 @@
+name: Build the ruby gem in a container
+on:
+  pull_request:
+
+jobs:
+  build-ruby-gem:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project code
+        uses: actions/checkout@v4
+
+      - name: Setup Docker builder
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build container for build target
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./deployment/Containerfile
+          target: build
+          push: false
+          load: true
+          tags: linuxfrorg/board-sse-linuxfr.org:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
