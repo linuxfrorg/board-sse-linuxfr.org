@@ -1,0 +1,47 @@
+name: Build the ruby gem in a container and publish it on Github Package Repository
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build-ruby-gem:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project code
+        uses: actions/checkout@v4
+
+      - name: Setup Docker builder
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build container for build target
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./deployment/Containerfile
+          target: build
+          push: false
+          load: true
+          tags: linuxfrorg/board-sse-linuxfr.org:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Publish gem to Github Package Repository
+        uses: addnab/docker-run-action@v3
+        env:
+          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
+          OWNER: ${{ github.repository_owner }}
+        with:
+          image: linuxfrorg/board-sse-linuxfr.org:${{ github.sha }}
+          options: >-
+            -e OWNER
+            -e GEM_HOST_API_KEY
+          run: |
+            set -eux
+            IFS=$'\n\t'
+
+            mkdir -p "${HOME}/.gem"
+            touch "${HOME}/.gem/credentials"
+            chmod 0600 "${HOME}/.gem/credentials"
+            printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > "${HOME}/.gem/credentials"
+            gem push --KEY github --host "https://rubygems.pkg.github.com/${OWNER}" *.gem
