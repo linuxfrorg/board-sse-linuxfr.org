@@ -6,6 +6,7 @@ require './lib/board-linuxfr/version'
 Gem::Specification.new do |s|
   s.name         = "board-linuxfr"
   s.version      = BoardLinuxfr::VERSION
+  s.licenses     = ["AGPL-3.0-only"]
   s.authors      = ["Bruno Michel", "Adrien Dorsaz"]
   s.email        = "adrien@adorsaz.ch"
   s.homepage     = "https://github.com/linuxfrorg/board-sse-linuxfr.org"

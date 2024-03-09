@@ -5,7 +5,7 @@ on:
       - published
 
 jobs:
-  build-ruby-gem:
+  release-ruby-gem:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project code
