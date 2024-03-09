@@ -9,16 +9,22 @@ when something is said with Server-Sent Event / EventSource.
 How to use it?
 --------------
 
-Install it with `gem install board-linuxfr`.
+You can nstall the gem with `gem install board-linuxfr` [using the linuxfrorg
+Github Package Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-rubygems-registry#installing-a-package).
 Then, you can launch it on local with `board-linuxfr -S /tmp/board.sock`
 and it will listen on a UNIX socket at `/tmp/board.sock`.
+
+Another way is to use a container engine (like Docker or Podman) and a
+composer (like the Docker compose plugin or the podman-compose utility)
+to build and setup a service.
 
 
 See also
 --------
 
 * [Git repository](https://github.com/linuxfrorg/board-sse-LinuxFr.org)
-* [Rubygems page](https://rubygems.org/gems/board-linuxfr)
+* For versions >= 0.1.4: [Github Package repostory](https://github.com/linuxfrorg/board-sse-linuxfr.org/pkgs/rubygems/board-linuxfr)
+* For older version: [Rubygems page](https://rubygems.org/gems/board-linuxfr)
 
 
 Copyright
