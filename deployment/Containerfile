@@ -1,7 +1,5 @@
 FROM docker.io/ruby:3-slim-bookworm AS build
 
-LABEL org.opencontainers.image.description="Chat rooms for LinuxFr"
-
 LABEL org.opencontainers.image.title="Board for LinuxFr.org"
 LABEL org.opencontainers.image.description="Users of the LinuxFr.org website can chat on a space called the board (« la tribune » in french). \
 This Ruby daemon notifies the users when something is said with Server-Sent Event / EventSource."
