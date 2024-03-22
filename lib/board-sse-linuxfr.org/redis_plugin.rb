@@ -2,10 +2,10 @@ require "hiredis"
 require "em-synchrony"
 require "redis"
 require "redis/connection/synchrony"
-require "board-linuxfr/cache"
+require "board-sse-linuxfr.org/cache"
 
 
-class BoardLinuxfr
+class BoardSseLinuxfrOrg
   class RedisPlugin
     def initialize(address, port, config, status, logger)
       logger.info "Initializing the Redis plugin"

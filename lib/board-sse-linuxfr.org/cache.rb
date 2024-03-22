@@ -1,4 +1,4 @@
-class BoardLinuxfr
+class BoardSseLinuxfrOrg
   class Cache
     CAPACITY = 10
 
