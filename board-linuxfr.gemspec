@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require './lib/board-linuxfr/version'
 
 Gem::Specification.new do |s|
-  s.name         = "board-linuxfr"
+  s.name         = "board-sse-linuxfr.org"
   s.version      = BoardLinuxfr::VERSION
   s.licenses     = ["AGPL-3.0-only"]
   s.authors      = ["Bruno Michel", "Adrien Dorsaz"]
   s.email        = "adrien@adorsaz.ch"
   s.homepage     = "https://github.com/linuxfrorg/board-sse-linuxfr.org"
-  s.summary      = "Push notifications for the board of LinuxFr.org via Server-Sent Events"
+  s.summary      = "Push notifications for the board of LinuxFr.org"
   s.description  = "Push notifications for the board of LinuxFr.org via Server-Sent Events"
 
   s.files        = Dir['lib/**/*.rb'] + Dir['bin/*']
