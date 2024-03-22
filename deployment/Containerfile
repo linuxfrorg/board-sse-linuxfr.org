@@ -10,17 +10,13 @@ LABEL org.opencontainers.image.authors="Adrien Dorsaz <adrien@adorsaz.ch>"
 
 ARG UID=1200
 
-RUN <<EOF
-set -eux
-IFS=$'\n\t'
-
-apt-get update
-
-apt-get install -y --no-install-recommends \
-  build-essential ruby ruby-dev
-
-apt-get clean
-EOF
+RUN \
+  set -eux; \
+  IFS=$'\n\t'; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends \
+    build-essential ruby ruby-dev; \
+  apt-get clean;
 
 USER ${UID}
 WORKDIR /linuxfr-board
