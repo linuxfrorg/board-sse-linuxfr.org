@@ -29,7 +29,7 @@ jobs:
       - name: Publish gem to Github Package Repository
         uses: addnab/docker-run-action@v3
         env:
-          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
+          GEM_HOST_API_KEY: "Bearer ${{secrets.RUBYGEM_PUSH_KEY}}"
           OWNER: ${{ github.repository_owner }}
         with:
           image: linuxfrorg/board-sse-linuxfr.org:${{ github.sha }}
@@ -43,5 +43,5 @@ jobs:
             mkdir -p "${HOME}/.gem"
             touch "${HOME}/.gem/credentials"
             chmod 0600 "${HOME}/.gem/credentials"
-            printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > "${HOME}/.gem/credentials"
-            gem push --KEY github --host "https://rubygems.pkg.github.com/${OWNER}" *.gem
+            printf -- "---\n:rubygem: ${GEM_HOST_API_KEY}\n" > "${HOME}/.gem/credentials"
+            gem push --KEY rubygem *.gem
