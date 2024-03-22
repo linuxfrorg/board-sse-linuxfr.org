@@ -2,10 +2,10 @@ require "goliath"
 require "yajl"
 
 
-class BoardLinuxfr < Goliath::API
-  autoload :Cache,       "board-linuxfr/cache"
-  autoload :RedisPlugin, "board-linuxfr/redis_plugin"
-  autoload :VERSION,     "board-linuxfr/version"
+class BoardSseLinuxfrOrg < Goliath::API
+  autoload :Cache,       "board-sse-linuxfr.org/cache"
+  autoload :RedisPlugin, "board-sse-linuxfr.org/redis_plugin"
+  autoload :VERSION,     "board-sse-linuxfr.org/version"
 
   plugin RedisPlugin
 

@@ -1,5 +1,5 @@
 services:
-  linuxfr-board:
+  board-sse-linuxfr.og:
     build:
       context: .
       dockerfile: ./deployment/Containerfile
